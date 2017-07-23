@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import Article from './Article';
 
 const articles = [
   { title: 'Hello world', voteCount: 0 },
   { title: 'Wow! \nReact version is awesome!!', voteCount: 5 },
-  { title: 'I love coding', voteCount: 88 }
+  { title: 'I love coding', voteCount: 8 }
 ];
-
-const Article = ({article, onChangeVote}) => {
-  return (
-    <article className="article">
-      <div className="counter">
-        <div><i className="fa fa-arrow-up" onClick={() => onChangeVote(1)}></i></div>
-        <div>{article.voteCount}</div>
-        <div><i className="fa fa-arrow-down" onClick={() => onChangeVote(-1)}></i></div>
-      </div>
-      <p className="content">{article.title}</p>
-    </article>)
-}
 
 class App extends Component {
   constructor(props) {
@@ -46,14 +35,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <h2>Welcome to Comet</h2>
         <form onSubmit={this.articleSubmit} className="article-form">
           <textArea rows="3" cols="100" type="text" value={this.state.newTitle} onChange={this.handleInputChange.bind(this)} maxLength="255" required />
           <button type="submit" >Add Article</button>
         </form>
         {this.state.articles.sort(({voteCount: a}, {voteCount: b}) => b - a).slice(0, 20).map((article, index) =>
-          <Article article={article} key={index} onChangeVote={(value) => this.changeVote(article, value)}></Article>
+          <Article article={article} key={index} onChangeVote={this.changeVote}></Article>
         )}
       </div>
     );
