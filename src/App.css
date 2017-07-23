@@ -1,3 +1,29 @@
 .App {
   margin: 1em;
 }
+
+.article-form {
+  display: flex
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  padding: .5em 0em;
+  border: 1px solid;
+  margin: .3em 0em
+}
+
+.article > .counter {
+  flex: 0 0 100px;
+  text-align: center
+}
+
+.article > .counter i {
+  cursor: pointer;
+}
+
+.article > .content {
+  flex: 1;
+  white-space: pre-line
+}
