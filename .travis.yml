@@ -16,7 +16,7 @@ script:
   - git commit --message "${TRAVIS_COMMIT_MESSAGE} [ci skip]"
   - git push --force "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
 env:
-  - PUBLIC_URL=/comet
   global:
+    - PUBLIC_URL: /comet
     - GH_REF: github.com/Asing1001/comet.git
     - PACKAGE_FOLDER: mypackages
