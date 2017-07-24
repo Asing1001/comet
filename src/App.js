@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Article from './Article';
+import Topic from './Topic';
 
-const articles = [
+const topics = [
   { title: 'Hello world', voteCount: 0 },
   { title: 'Wow! \nReact version is awesome!!', voteCount: 5 },
   { title: 'I love coding', voteCount: 8 }
@@ -13,7 +13,7 @@ class App extends Component {
     super(props)
     this.state = {
       newTitle: '',
-      articles
+      topics
     };
 
   }
@@ -22,27 +22,27 @@ class App extends Component {
     this.setState({ newTitle: event.target.value })
   }
 
-  articleSubmit = (event) => {
-    this.state.articles.unshift({ title: this.state.newTitle, voteCount: 0 })
-    this.setState({ articles: this.state.articles })
+  topicSubmit = (event) => {
+    this.state.topics.unshift({ title: this.state.newTitle, voteCount: 0 })
+    this.setState({ topics: this.state.topics })
     event.preventDefault();
   }
 
-  changeVote = (article, value) => {
-    article.voteCount += value;
-    this.setState({ articles: this.state.articles })
+  changeVote = (topic, value) => {
+    topic.voteCount += value;
+    this.setState({ topics: this.state.topics })
   }
 
   render() {
     return (
       <div className="app">
         <h2>Welcome to Comet</h2>
-        <form onSubmit={this.articleSubmit} className="article-form">
+        <form onSubmit={this.topicSubmit} className="topic-form">
           <textArea rows="3" cols="100" type="text" value={this.state.newTitle} onChange={this.handleInputChange.bind(this)} maxLength="255" required />
-          <button type="submit" >Add Article</button>
+          <button type="submit" >Add Topic</button>
         </form>
-        {this.state.articles.sort(({voteCount: a}, {voteCount: b}) => b - a).slice(0, 20).map((article, index) =>
-          <Article article={article} key={index} onChangeVote={this.changeVote}></Article>
+        {this.state.topics.sort(({voteCount: a}, {voteCount: b}) => b - a).slice(0, 20).map((topic, index) =>
+          <Topic topic={topic} key={index} onChangeVote={this.changeVote}></Topic>
         )}
       </div>
     );

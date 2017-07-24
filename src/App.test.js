@@ -1,8 +1,9 @@
 import React from 'react';
 import App from './App';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import Topic from './Topic';
 
-describe('Component:Article', () => {
+describe('Component:App', () => {
   it('renders without crashing', () => {
     shallow(<App />);
   });
@@ -12,7 +13,7 @@ describe('Component:Article', () => {
     const wrapper = shallow(
       <App />
     );
-    const expectResult = 'aaa';
+    const expectResult = 'test title';
 
     //act
     const textArea = wrapper.find('textArea');
@@ -23,19 +24,19 @@ describe('Component:Article', () => {
     expect(actual).toEqual(expectResult);
   });
 
-  it('Click add article should length +1', () => {
+  it('click Add topic should length +1', () => {
     //arrange
     const wrapper = shallow(
       <App />
     );
-    const expectResult = wrapper.state('articles').length + 1;
+    const expectResult = wrapper.state('topics').length + 1;
     const form = wrapper.find('form');
 
     //act
     form.simulate('submit', { preventDefault() { } });
-    const actual = wrapper.state('articles').length;
 
     //assert
+    const actual = wrapper.state('topics').length;
     expect(actual).toEqual(expectResult);
   });
 })

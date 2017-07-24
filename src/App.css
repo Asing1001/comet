@@ -2,11 +2,11 @@
   margin: 1em;
 }
 
-.article-form {
+.topic-form {
   display: flex
 }
 
-.article {
+.topic {
   display: flex;
   align-items: center;
   padding: .5em 0em;
@@ -14,16 +14,16 @@
   margin: .3em 0em
 }
 
-.article > .counter {
+.topic > .counter {
   flex: 0 0 100px;
   text-align: center
 }
 
-.article > .counter i {
+.topic > .counter i {
   cursor: pointer;
 }
 
-.article > .content {
+.topic > .content {
   flex: 1;
   white-space: pre-line
 }
